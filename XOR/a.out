@@ -1,0 +1,48 @@
+#! /usr/share/iverilog-0.10.0/bin/vvp
+:ivl_version "0.10.0 (devel)" "(v0_9_6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+:vpi_module "v2009";
+S_0x9587b0 .scope module, "XOR_TB" "XOR_TB" 2 5;
+ .timescale -9 -9;
+v0x96a110_0 .var "a", 0 0;
+v0x96a1e0_0 .var "b", 0 0;
+v0x96a2b0_0 .net "y", 0 0, L_0x96a3b0;  1 drivers
+S_0x958930 .scope module, "UUT" "XOR" 2 8, 3 2 0, S_0x9587b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "Y"
+    .port_info 1 /INPUT 1 "A"
+    .port_info 2 /INPUT 1 "B"
+L_0x96a3b0 .functor XOR 1, v0x96a110_0, v0x96a1e0_0, C4<0>, C4<0>;
+v0x935bb0_0 .net "A", 0 0, v0x96a110_0;  1 drivers
+v0x969f00_0 .net "B", 0 0, v0x96a1e0_0;  1 drivers
+v0x969fc0_0 .net "Y", 0 0, L_0x96a3b0;  alias, 1 drivers
+    .scope S_0x9587b0;
+T_0 ;
+    %vpi_call/w 2 11 "$dumpfile", "wave.vcd" {0 0};
+    %vpi_call/w 2 12 "$dumpvars", 1'sb0, S_0x9587b0 {0 0};
+    %vpi_call/w 2 13 "$monitor", "%d %d -> %d", v0x96a110_0, v0x96a1e0_0, v0x96a2b0_0 {0 0};
+    %delay 2, 0;
+    %set/v v0x96a110_0, 0, 1;
+    %set/v v0x96a1e0_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0x96a1e0_0, 1, 1;
+    %delay 2, 0;
+    %set/v v0x96a110_0, 1, 1;
+    %set/v v0x96a1e0_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0x96a1e0_0, 1, 1;
+    %delay 5, 0;
+    %vpi_call/w 2 18 "$finish" {0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "design.sv";

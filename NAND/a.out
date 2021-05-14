@@ -1,0 +1,50 @@
+#! /usr/share/iverilog-0.10.0/bin/vvp
+:ivl_version "0.10.0 (devel)" "(v0_9_6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+:vpi_module "v2009";
+S_0x16dc7b0 .scope module, "NAND_TB" "NAND_TB" 2 5;
+ .timescale -9 -9;
+v0x16ee5b0_0 .var "a", 0 0;
+v0x16ee680_0 .var "b", 0 0;
+v0x16ee750_0 .net "y", 0 0, L_0x16ee990;  1 drivers
+S_0x16dc930 .scope module, "UUT" "NAND" 2 8, 3 2 0, S_0x16dc7b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "Y"
+    .port_info 1 /INPUT 1 "A"
+    .port_info 2 /INPUT 1 "B"
+L_0x16ee850 .functor AND 1, v0x16ee5b0_0, v0x16ee680_0, C4<1>, C4<1>;
+L_0x16ee990 .functor NOT 1, L_0x16ee850, C4<0>, C4<0>, C4<0>;
+v0x16b9f80_0 .net "A", 0 0, v0x16ee5b0_0;  1 drivers
+v0x16ee2c0_0 .net "B", 0 0, v0x16ee680_0;  1 drivers
+v0x16ee380_0 .net "Y", 0 0, L_0x16ee990;  alias, 1 drivers
+v0x16ee450_0 .net *"_s0", 0 0, L_0x16ee850;  1 drivers
+    .scope S_0x16dc7b0;
+T_0 ;
+    %vpi_call/w 2 11 "$dumpfile", "wave.vcd" {0 0};
+    %vpi_call/w 2 12 "$dumpvars", 1'sb0, S_0x16dc7b0 {0 0};
+    %vpi_call/w 2 13 "$monitor", "%d %d -> %d", v0x16ee5b0_0, v0x16ee680_0, v0x16ee750_0 {0 0};
+    %delay 2, 0;
+    %set/v v0x16ee5b0_0, 0, 1;
+    %set/v v0x16ee680_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0x16ee680_0, 1, 1;
+    %delay 2, 0;
+    %set/v v0x16ee5b0_0, 1, 1;
+    %set/v v0x16ee680_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0x16ee680_0, 1, 1;
+    %delay 5, 0;
+    %vpi_call/w 2 18 "$finish" {0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "design.sv";

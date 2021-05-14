@@ -1,0 +1,39 @@
+#! /usr/share/iverilog-0.10.0/bin/vvp
+:ivl_version "0.10.0 (devel)" "(v0_9_6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+:vpi_module "v2009";
+S_0x194e7b0 .scope module, "NOT_TB" "NOT_TB" 2 5;
+ .timescale -9 -9;
+v0x195ea60_0 .var "a", 0 0;
+v0x195eb30_0 .net "y", 0 0, L_0x195ec00;  1 drivers
+S_0x194e930 .scope module, "UUT" "NOT" 2 8, 3 2 0, S_0x194e7b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "Y"
+    .port_info 1 /INPUT 1 "A"
+L_0x195ec00 .functor NOT 1, v0x195ea60_0, C4<0>, C4<0>, C4<0>;
+v0x192b7d0_0 .net "A", 0 0, v0x195ea60_0;  1 drivers
+v0x195e940_0 .net "Y", 0 0, L_0x195ec00;  alias, 1 drivers
+    .scope S_0x194e7b0;
+T_0 ;
+    %vpi_call/w 2 11 "$dumpfile", "wave.vcd" {0 0};
+    %vpi_call/w 2 12 "$dumpvars", 1'sb0, S_0x194e7b0 {0 0};
+    %vpi_call/w 2 13 "$monitor", "%d  -> %d", v0x195ea60_0, v0x195eb30_0 {0 0};
+    %delay 2, 0;
+    %set/v v0x195ea60_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0x195ea60_0, 1, 1;
+    %delay 5, 0;
+    %vpi_call/w 2 16 "$finish" {0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "design.sv";
