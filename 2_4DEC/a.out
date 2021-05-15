@@ -1,0 +1,68 @@
+#! /usr/share/iverilog-0.10.0/bin/vvp
+:ivl_version "0.10.0 (devel)" "(v0_9_6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+:vpi_module "v2009";
+S_0x19eb3d0 .scope module, "dec2_4_tb" "dec2_4_tb" 2 4;
+ .timescale -9 -9;
+v0x1a20f90_0 .var "a", 0 0;
+v0x1a21050_0 .var "b", 0 0;
+v0x1a21120_0 .net "y0", 0 0, L_0x1a21610;  1 drivers
+v0x1a21220_0 .net "y1", 0 0, L_0x1a217e0;  1 drivers
+v0x1a212f0_0 .net "y2", 0 0, L_0x1a219f0;  1 drivers
+v0x1a21390_0 .net "y3", 0 0, L_0x1a21af0;  1 drivers
+S_0x19eaed0 .scope module, "UUT" "dec2_4" 2 7, 3 2 0, S_0x19eb3d0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /OUTPUT 1 "y0"
+    .port_info 3 /OUTPUT 1 "y1"
+    .port_info 4 /OUTPUT 1 "y2"
+    .port_info 5 /OUTPUT 1 "y3"
+L_0x1a21460 .functor NOT 1, v0x1a20f90_0, C4<0>, C4<0>, C4<0>;
+L_0x1a21550 .functor NOT 1, v0x1a21050_0, C4<0>, C4<0>, C4<0>;
+L_0x1a21610 .functor AND 1, L_0x1a21460, L_0x1a21550, C4<1>, C4<1>;
+L_0x1a21770 .functor NOT 1, v0x1a20f90_0, C4<0>, C4<0>, C4<0>;
+L_0x1a217e0 .functor AND 1, L_0x1a21770, v0x1a21050_0, C4<1>, C4<1>;
+L_0x1a218f0 .functor NOT 1, v0x1a21050_0, C4<0>, C4<0>, C4<0>;
+L_0x1a219f0 .functor AND 1, v0x1a20f90_0, L_0x1a218f0, C4<1>, C4<1>;
+L_0x1a21af0 .functor AND 1, v0x1a20f90_0, v0x1a21050_0, C4<1>, C4<1>;
+v0x19e9e30_0 .net *"_s0", 0 0, L_0x1a21460;  1 drivers
+v0x1a20680_0 .net *"_s10", 0 0, L_0x1a218f0;  1 drivers
+v0x1a20760_0 .net *"_s2", 0 0, L_0x1a21550;  1 drivers
+v0x1a20850_0 .net *"_s6", 0 0, L_0x1a21770;  1 drivers
+v0x1a20930_0 .net "a", 0 0, v0x1a20f90_0;  1 drivers
+v0x1a20a40_0 .net "b", 0 0, v0x1a21050_0;  1 drivers
+v0x1a20b00_0 .net "y0", 0 0, L_0x1a21610;  alias, 1 drivers
+v0x1a20bc0_0 .net "y1", 0 0, L_0x1a217e0;  alias, 1 drivers
+v0x1a20c80_0 .net "y2", 0 0, L_0x1a219f0;  alias, 1 drivers
+v0x1a20dd0_0 .net "y3", 0 0, L_0x1a21af0;  alias, 1 drivers
+    .scope S_0x19eb3d0;
+T_0 ;
+    %vpi_call/w 2 9 "$dumpfile", "dec2_4_wave.vcd" {0 0};
+    %vpi_call/w 2 10 "$dumpvars", 1'sb0, S_0x19eb3d0 {0 0};
+    %vpi_call/w 2 11 "$monitor", "%d %d -> %d %d %d %d", v0x1a20f90_0, v0x1a21050_0, v0x1a21120_0, v0x1a21220_0, v0x1a212f0_0, v0x1a21390_0 {0 0};
+    %delay 2, 0;
+    %set/v v0x1a20f90_0, 0, 1;
+    %set/v v0x1a21050_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0x1a21050_0, 1, 1;
+    %delay 2, 0;
+    %set/v v0x1a20f90_0, 1, 1;
+    %set/v v0x1a21050_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0x1a21050_0, 1, 1;
+    %delay 5, 0;
+    %vpi_call/w 2 16 "$finish" {0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "design.sv";

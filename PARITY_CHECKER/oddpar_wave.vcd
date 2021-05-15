@@ -1,0 +1,35 @@
+$date
+	Sat May 15 09:53:15 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module OddPar_9bit_tb $end
+$var wire 1 ! p $end
+$var reg 9 " d [8:0] $end
+$scope module UUT $end
+$var wire 9 # data [8:0] $end
+$var wire 1 ! parity $end
+$var wire 1 $ t $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+x$
+bx #
+bx "
+x!
+$end
+#2
+0!
+1$
+b100000000 "
+b100000000 #
+#4
+b101100101 "
+b101100101 #
+#9

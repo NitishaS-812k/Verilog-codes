@@ -1,0 +1,88 @@
+#! /usr/share/iverilog-0.10.0/bin/vvp
+:ivl_version "0.10.0 (devel)" "(v0_9_6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+:vpi_module "v2009";
+S_0x223b7b0 .scope module, "Full_Subtractor_tb" "Full_Subtractor_tb" 2 4;
+ .timescale -9 -9;
+v0x22549d0_0 .net "B", 0 0, L_0x2255430;  1 drivers
+v0x2254a90_0 .net "D", 0 0, L_0x2254f10;  1 drivers
+v0x2254b60_0 .var "X", 0 0;
+v0x2254c60_0 .var "Y", 0 0;
+v0x2254d30_0 .var "Z", 0 0;
+S_0x223b930 .scope module, "UUT" "Full_Subtractor" 2 7, 3 2 0, S_0x223b7b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "D"
+    .port_info 1 /OUTPUT 1 "B"
+    .port_info 2 /INPUT 1 "X"
+    .port_info 3 /INPUT 1 "Y"
+    .port_info 4 /INPUT 1 "Z"
+L_0x2254dd0 .functor XOR 1, v0x2254b60_0, v0x2254c60_0, C4<0>, C4<0>;
+L_0x2254f10 .functor XOR 1, L_0x2254dd0, v0x2254d30_0, C4<0>, C4<0>;
+L_0x2255070 .functor NOT 1, v0x2254b60_0, C4<0>, C4<0>, C4<0>;
+L_0x22550e0 .functor XOR 1, v0x2254c60_0, v0x2254d30_0, C4<0>, C4<0>;
+L_0x2255150 .functor AND 1, L_0x2255070, L_0x22550e0, C4<1>, C4<1>;
+L_0x2255260 .functor AND 1, v0x2254c60_0, v0x2254d30_0, C4<1>, C4<1>;
+L_0x2255430 .functor OR 1, L_0x2255150, L_0x2255260, C4<0>, C4<0>;
+v0x221acc0_0 .net "B", 0 0, L_0x2255430;  alias, 1 drivers
+v0x22540e0_0 .net "D", 0 0, L_0x2254f10;  alias, 1 drivers
+v0x22541a0_0 .net "X", 0 0, v0x2254b60_0;  1 drivers
+v0x2254270_0 .net "Y", 0 0, v0x2254c60_0;  1 drivers
+v0x2254330_0 .net "Z", 0 0, v0x2254d30_0;  1 drivers
+v0x2254440_0 .net *"_s0", 0 0, L_0x2254dd0;  1 drivers
+v0x2254520_0 .net *"_s10", 0 0, L_0x2255260;  1 drivers
+v0x2254600_0 .net *"_s4", 0 0, L_0x2255070;  1 drivers
+v0x22546e0_0 .net *"_s6", 0 0, L_0x22550e0;  1 drivers
+v0x2254850_0 .net *"_s8", 0 0, L_0x2255150;  1 drivers
+    .scope S_0x223b7b0;
+T_0 ;
+    %set/v v0x2254b60_0, 0, 1;
+    %set/v v0x2254c60_0, 0, 1;
+    %set/v v0x2254d30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x2254b60_0, 0, 1;
+    %set/v v0x2254c60_0, 0, 1;
+    %set/v v0x2254d30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x2254b60_0, 0, 1;
+    %set/v v0x2254c60_0, 1, 1;
+    %set/v v0x2254d30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x2254b60_0, 0, 1;
+    %set/v v0x2254c60_0, 1, 1;
+    %set/v v0x2254d30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x2254b60_0, 1, 1;
+    %set/v v0x2254c60_0, 0, 1;
+    %set/v v0x2254d30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x2254b60_0, 1, 1;
+    %set/v v0x2254c60_0, 0, 1;
+    %set/v v0x2254d30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x2254b60_0, 1, 1;
+    %set/v v0x2254c60_0, 1, 1;
+    %set/v v0x2254d30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x2254b60_0, 1, 1;
+    %set/v v0x2254c60_0, 1, 1;
+    %set/v v0x2254d30_0, 1, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x223b7b0;
+T_1 ;
+    %vpi_call/w 2 19 "$monitor", "%t, X = %d| Y = %d| Z = %d| B = %d| D = %d", $time, v0x2254b60_0, v0x2254c60_0, v0x2254d30_0, v0x22549d0_0, v0x2254a90_0 {0 0};
+    %vpi_call/w 2 20 "$dumpfile", "dump.vcd" {0 0};
+    %vpi_call/w 2 21 "$dumpvars" {0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "design.sv";

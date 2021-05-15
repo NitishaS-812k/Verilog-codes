@@ -1,0 +1,82 @@
+#! /usr/share/iverilog-0.10.0/bin/vvp
+:ivl_version "0.10.0 (devel)" "(v0_9_6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+:vpi_module "v2009";
+S_0x1563310 .scope module, "fadder_tb" "fadder_tb" 2 4;
+ .timescale -9 -9;
+v0x1577830_0 .var "a", 0 0;
+v0x1577920_0 .var "b", 0 0;
+v0x1577a30_0 .var "c", 0 0;
+v0x1577b20_0 .net "co", 0 0, L_0x15781b0;  1 drivers
+v0x1577bc0_0 .net "s", 0 0, L_0x1577f50;  1 drivers
+S_0x15607b0 .scope module, "UUT" "full_adder" 2 7, 3 2 0, S_0x1563310;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "fsum"
+    .port_info 1 /OUTPUT 1 "fcarry_out"
+    .port_info 2 /INPUT 1 "a"
+    .port_info 3 /INPUT 1 "b"
+    .port_info 4 /INPUT 1 "c"
+L_0x15781b0 .functor OR 1, L_0x1578090, L_0x1577d70, C4<0>, C4<0>;
+v0x1577180_0 .net "a", 0 0, v0x1577830_0;  1 drivers
+v0x1577240_0 .net "b", 0 0, v0x1577920_0;  1 drivers
+v0x1577310_0 .net "c", 0 0, v0x1577a30_0;  1 drivers
+v0x1577410_0 .net "fcarry_out", 0 0, L_0x15781b0;  alias, 1 drivers
+v0x15774b0_0 .net "fsum", 0 0, L_0x1577f50;  alias, 1 drivers
+v0x15775a0_0 .net "half_carry_1", 0 0, L_0x1577d70;  1 drivers
+v0x1577670_0 .net "half_carry_2", 0 0, L_0x1578090;  1 drivers
+v0x1577740_0 .net "half_sum_1", 0 0, L_0x1577d00;  1 drivers
+S_0x1562230 .scope module, "HA1" "half_adder" 3 6, 3 11 0, S_0x15607b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "sum"
+    .port_info 1 /OUTPUT 1 "carry"
+    .port_info 2 /INPUT 1 "a"
+    .port_info 3 /INPUT 1 "b"
+L_0x1577d00 .functor XOR 1, v0x1577830_0, v0x1577920_0, C4<0>, C4<0>;
+L_0x1577d70 .functor AND 1, v0x1577830_0, v0x1577920_0, C4<1>, C4<1>;
+v0x1562400_0 .net "a", 0 0, v0x1577830_0;  alias, 1 drivers
+v0x1576870_0 .net "b", 0 0, v0x1577920_0;  alias, 1 drivers
+v0x1576930_0 .net "carry", 0 0, L_0x1577d70;  alias, 1 drivers
+v0x1576a00_0 .net "sum", 0 0, L_0x1577d00;  alias, 1 drivers
+S_0x1576b70 .scope module, "HA2" "half_adder" 3 7, 3 11 0, S_0x15607b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "sum"
+    .port_info 1 /OUTPUT 1 "carry"
+    .port_info 2 /INPUT 1 "a"
+    .port_info 3 /INPUT 1 "b"
+L_0x1577f50 .functor XOR 1, L_0x1577d00, v0x1577a30_0, C4<0>, C4<0>;
+L_0x1578090 .functor AND 1, L_0x1577d00, v0x1577a30_0, C4<1>, C4<1>;
+v0x1576dd0_0 .net "a", 0 0, L_0x1577d00;  alias, 1 drivers
+v0x1576ea0_0 .net "b", 0 0, v0x1577a30_0;  alias, 1 drivers
+v0x1576f40_0 .net "carry", 0 0, L_0x1578090;  alias, 1 drivers
+v0x1577010_0 .net "sum", 0 0, L_0x1577f50;  alias, 1 drivers
+    .scope S_0x1563310;
+T_0 ;
+    %vpi_call/w 2 9 "$dumpfile", "wave.vcd" {0 0};
+    %vpi_call/w 2 10 "$dumpvars", 1'sb0, S_0x1563310 {0 0};
+    %vpi_call/w 2 11 "$monitor", "%d %d %d -> %d %d", v0x1577830_0, v0x1577920_0, v0x1577a30_0, v0x1577bc0_0, v0x1577b20_0 {0 0};
+    %delay 2, 0;
+    %set/v v0x1577830_0, 0, 1;
+    %set/v v0x1577920_0, 0, 1;
+    %set/v v0x1577a30_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0x1577a30_0, 1, 1;
+    %delay 2, 0;
+    %set/v v0x1577920_0, 1, 1;
+    %set/v v0x1577a30_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0x1577a30_0, 1, 1;
+    %delay 5, 0;
+    %vpi_call/w 2 16 "$finish" {0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "design.sv";

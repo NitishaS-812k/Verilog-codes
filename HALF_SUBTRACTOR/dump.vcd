@@ -1,0 +1,40 @@
+$date
+	Sat May 15 10:22:03 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module Half_Subtractor_2_tb $end
+$var wire 1 ! D $end
+$var wire 1 " B $end
+$var reg 1 # X $end
+$var reg 1 $ Y $end
+$scope module UUT $end
+$var wire 1 " B $end
+$var wire 1 ! D $end
+$var wire 1 # X $end
+$var wire 1 $ Y $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0$
+0#
+0"
+0!
+$end
+#1
+1!
+1"
+1$
+#2
+0"
+0$
+1#
+#3
+0!
+1$

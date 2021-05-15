@@ -1,0 +1,58 @@
+#! /usr/share/iverilog-0.10.0/bin/vvp
+:ivl_version "0.10.0 (devel)" "(v0_9_6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+:vpi_module "v2009";
+S_0x286d460 .scope module, "bit2_magnitude_comparator_tb" "bit2_magnitude_comparator_tb" 2 1;
+ .timescale 0 0;
+v0x287f0b0_0 .var "a", 0 0;
+v0x287f170_0 .var "b", 0 0;
+v0x287f240_0 .net "x", 0 0, L_0x287f6b0;  1 drivers
+v0x287f340_0 .net "y", 0 0, L_0x287f8d0;  1 drivers
+v0x287f410_0 .net "z", 0 0, L_0x287f7c0;  1 drivers
+S_0x286b7e0 .scope module, "UUT" "bit2_magnitude_comparator_" 2 5, 3 1 0, S_0x286d460;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "x"
+    .port_info 1 /OUTPUT 1 "y"
+    .port_info 2 /OUTPUT 1 "z"
+    .port_info 3 /INPUT 1 "a"
+    .port_info 4 /INPUT 1 "b"
+L_0x287f500 .functor NOT 1, v0x287f0b0_0, C4<0>, C4<0>, C4<0>;
+L_0x287f5f0 .functor NOT 1, v0x287f170_0, C4<0>, C4<0>, C4<0>;
+L_0x287f6b0 .functor AND 1, L_0x287f500, v0x287f170_0, C4<1>, C4<1>;
+L_0x287f7c0 .functor AND 1, v0x287f0b0_0, L_0x287f5f0, C4<1>, C4<1>;
+L_0x287f8d0 .functor XNOR 1, v0x287f0b0_0, v0x287f170_0, C4<0>, C4<0>;
+v0x286ba30_0 .net "a", 0 0, v0x287f0b0_0;  1 drivers
+v0x287eb30_0 .net "b", 0 0, v0x287f170_0;  1 drivers
+v0x287ebf0_0 .net "s", 0 0, L_0x287f500;  1 drivers
+v0x287ecc0_0 .net "t", 0 0, L_0x287f5f0;  1 drivers
+v0x287ed80_0 .net "x", 0 0, L_0x287f6b0;  alias, 1 drivers
+v0x287ee90_0 .net "y", 0 0, L_0x287f8d0;  alias, 1 drivers
+v0x287ef50_0 .net "z", 0 0, L_0x287f7c0;  alias, 1 drivers
+    .scope S_0x286d460;
+T_0 ;
+    %vpi_call/w 2 8 "$monitor", "%d %d : %d %d %d ", v0x287f0b0_0, v0x287f170_0, v0x287f240_0, v0x287f340_0, v0x287f410_0 {0 0};
+    %delay 2, 0;
+    %set/v v0x287f0b0_0, 0, 1;
+    %set/v v0x287f170_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0x287f170_0, 1, 1;
+    %delay 2, 0;
+    %set/v v0x287f0b0_0, 1, 1;
+    %set/v v0x287f170_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0x287f170_0, 1, 1;
+    %delay 2, 0;
+    %vpi_call/w 2 13 "$finish" {0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "design.sv";

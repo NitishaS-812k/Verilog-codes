@@ -1,0 +1,147 @@
+#! /usr/share/iverilog-0.10.0/bin/vvp
+:ivl_version "0.10.0 (devel)" "(v0_9_6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+:vpi_module "v2009";
+S_0x24387b0 .scope module, "mux81_tb" "mux81_tb" 2 4;
+ .timescale -9 -12;
+v0x2451c30_0 .var "D0", 0 0;
+v0x2451cf0_0 .var "D1", 0 0;
+v0x2451dc0_0 .var "D2", 0 0;
+v0x2451ec0_0 .var "D3", 0 0;
+v0x2451f90_0 .var "D4", 0 0;
+v0x2452030_0 .var "D5", 0 0;
+v0x2452100_0 .var "D6", 0 0;
+v0x24521d0_0 .var "D7", 0 0;
+v0x24522a0_0 .net "out", 0 0, v0x2451860_0;  1 drivers
+v0x2452400_0 .var "sel", 2 0;
+S_0x2438930 .scope module, "UUT" "mux81" 2 8, 3 2 0, S_0x24387b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "out"
+    .port_info 1 /INPUT 1 "D0"
+    .port_info 2 /INPUT 1 "D1"
+    .port_info 3 /INPUT 1 "D2"
+    .port_info 4 /INPUT 1 "D3"
+    .port_info 5 /INPUT 1 "D4"
+    .port_info 6 /INPUT 1 "D5"
+    .port_info 7 /INPUT 1 "D6"
+    .port_info 8 /INPUT 1 "D7"
+    .port_info 9 /INPUT 3 "sel"
+v0x2415d10_0 .net "D0", 0 0, v0x2451c30_0;  1 drivers
+v0x24512c0_0 .net "D1", 0 0, v0x2451cf0_0;  1 drivers
+v0x2451380_0 .net "D2", 0 0, v0x2451dc0_0;  1 drivers
+v0x2451450_0 .net "D3", 0 0, v0x2451ec0_0;  1 drivers
+v0x2451510_0 .net "D4", 0 0, v0x2451f90_0;  1 drivers
+v0x2451620_0 .net "D5", 0 0, v0x2452030_0;  1 drivers
+v0x24516e0_0 .net "D6", 0 0, v0x2452100_0;  1 drivers
+v0x24517a0_0 .net "D7", 0 0, v0x24521d0_0;  1 drivers
+v0x2451860_0 .var "out", 0 0;
+v0x24519b0_0 .net "sel", 2 0, v0x2452400_0;  1 drivers
+E_0x2415db0/0 .event edge, v0x24519b0_0, v0x2415d10_0, v0x24512c0_0, v0x2451380_0;
+E_0x2415db0/1 .event edge, v0x2451450_0, v0x2451510_0, v0x2451620_0, v0x24516e0_0;
+E_0x2415db0/2 .event edge, v0x24517a0_0;
+E_0x2415db0 .event/or E_0x2415db0/0, E_0x2415db0/1, E_0x2415db0/2;
+    .scope S_0x2438930;
+T_0 ;
+    %wait E_0x2415db0;
+    %load/v 8, v0x24519b0_0, 3;
+    %cmpi/u 8, 0, 3;
+    %jmp/1 T_0.0, 6;
+    %cmpi/u 8, 1, 3;
+    %jmp/1 T_0.1, 6;
+    %cmpi/u 8, 2, 3;
+    %jmp/1 T_0.2, 6;
+    %cmpi/u 8, 3, 3;
+    %jmp/1 T_0.3, 6;
+    %cmpi/u 8, 4, 3;
+    %jmp/1 T_0.4, 6;
+    %cmpi/u 8, 5, 3;
+    %jmp/1 T_0.5, 6;
+    %cmpi/u 8, 6, 3;
+    %jmp/1 T_0.6, 6;
+    %cmpi/u 8, 7, 3;
+    %jmp/1 T_0.7, 6;
+    %set/v v0x2451860_0, 0, 1;
+    %jmp T_0.9;
+T_0.0 ;
+    %load/v 8, v0x2415d10_0, 1;
+    %set/v v0x2451860_0, 8, 1;
+    %jmp T_0.9;
+T_0.1 ;
+    %load/v 8, v0x24512c0_0, 1;
+    %set/v v0x2451860_0, 8, 1;
+    %jmp T_0.9;
+T_0.2 ;
+    %load/v 8, v0x2451380_0, 1;
+    %set/v v0x2451860_0, 8, 1;
+    %jmp T_0.9;
+T_0.3 ;
+    %load/v 8, v0x2451450_0, 1;
+    %set/v v0x2451860_0, 8, 1;
+    %jmp T_0.9;
+T_0.4 ;
+    %load/v 8, v0x2451510_0, 1;
+    %set/v v0x2451860_0, 8, 1;
+    %jmp T_0.9;
+T_0.5 ;
+    %load/v 8, v0x2451620_0, 1;
+    %set/v v0x2451860_0, 8, 1;
+    %jmp T_0.9;
+T_0.6 ;
+    %load/v 8, v0x24516e0_0, 1;
+    %set/v v0x2451860_0, 8, 1;
+    %jmp T_0.9;
+T_0.7 ;
+    %load/v 8, v0x24517a0_0, 1;
+    %set/v v0x2451860_0, 8, 1;
+    %jmp T_0.9;
+T_0.9 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_0x24387b0;
+T_1 ;
+    %vpi_call/w 2 11 "$monitor", "%d --> %d", v0x2452400_0, v0x24522a0_0 {0 0};
+    %set/v v0x2451c30_0, 1, 1;
+    %set/v v0x2451cf0_0, 0, 1;
+    %set/v v0x2451dc0_0, 0, 1;
+    %set/v v0x2451ec0_0, 1, 1;
+    %set/v v0x2451f90_0, 0, 1;
+    %set/v v0x2452030_0, 0, 1;
+    %set/v v0x2452100_0, 0, 1;
+    %set/v v0x24521d0_0, 1, 1;
+    %delay 2000, 0;
+    %set/v v0x2452400_0, 0, 3;
+    %delay 2000, 0;
+    %movi 8, 1, 3;
+    %set/v v0x2452400_0, 8, 3;
+    %delay 2000, 0;
+    %movi 8, 2, 3;
+    %set/v v0x2452400_0, 8, 3;
+    %delay 2000, 0;
+    %movi 8, 3, 3;
+    %set/v v0x2452400_0, 8, 3;
+    %delay 2000, 0;
+    %movi 8, 4, 3;
+    %set/v v0x2452400_0, 8, 3;
+    %delay 2000, 0;
+    %movi 8, 5, 3;
+    %set/v v0x2452400_0, 8, 3;
+    %delay 2000, 0;
+    %movi 8, 6, 3;
+    %set/v v0x2452400_0, 8, 3;
+    %delay 2000, 0;
+    %set/v v0x2452400_0, 1, 3;
+    %delay 1000000, 0;
+    %vpi_call/w 2 21 "$finish" {0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "design.sv";

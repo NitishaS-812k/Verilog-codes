@@ -1,0 +1,56 @@
+$date
+	Sat May 15 10:40:30 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module dec2_4_tb $end
+$var wire 1 ! y3 $end
+$var wire 1 " y2 $end
+$var wire 1 # y1 $end
+$var wire 1 $ y0 $end
+$var reg 1 % a $end
+$var reg 1 & b $end
+$scope module UUT $end
+$var wire 1 % a $end
+$var wire 1 & b $end
+$var wire 1 $ y0 $end
+$var wire 1 # y1 $end
+$var wire 1 " y2 $end
+$var wire 1 ! y3 $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+x&
+x%
+x$
+x#
+x"
+x!
+$end
+#2
+1$
+0#
+0"
+0!
+0&
+0%
+#4
+0$
+1#
+1&
+#6
+1"
+0#
+0&
+1%
+#8
+0"
+1!
+1&
+#13
